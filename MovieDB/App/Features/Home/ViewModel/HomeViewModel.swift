@@ -20,7 +20,7 @@ final class HomeViewModel: ObservableObject {
     func getPopularMovies() async {
         do {
             let data = try await movieRepository.getPopularMovie()
-            self.popularMovieList = data.data ?? []
+            self.popularMovieList = data.results ?? []
         } catch {
             print(error.localizedDescription)
         }

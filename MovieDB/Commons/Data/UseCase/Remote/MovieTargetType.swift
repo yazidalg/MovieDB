@@ -48,7 +48,18 @@ extension MovieTargetType: DefaultTargetType {
         }
     }
     
+    var parametersEncoding: Moya.ParameterEncoding {
+        switch self {
+        case .getPopularMovies:
+            return URLEncoding.default
+        case .getUpcomingMovies:
+            return URLEncoding.default
+        case .getTopRatedMovies:
+            return URLEncoding.default
+        }
+    }
+    
     var task: Task {
-        return .requestParameters(parameters: parameters, encoding: parameterEncoding)
+        return .requestParameters(parameters: parameters, encoding: parametersEncoding)
     }
 }

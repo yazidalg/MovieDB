@@ -27,8 +27,7 @@ extension DefaultTargetType {
     
     var headers: [String : String]? {
         return [
-            "accept": "application/json",
-            "Authorization": Constant.accessToken
+            "Authorization" : Constant.accessToken
         ]
     }
 }

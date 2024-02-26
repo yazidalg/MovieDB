@@ -405,6 +405,7 @@
 			mainGroup = 8A788B3B2B860460003D8F68;
 			packageReferences = (
 				8A0183762B86243C00C6FCEE /* XCRemoteSwiftPackageReference "Moya" */,
+				A9F0BAEF2B8CDEB100DAA623 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 8A788B452B860460003D8F68 /* Products */;
 			projectDirPath = "";
@@ -791,6 +792,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 15.0.3;
+			};
+		};
+		A9F0BAEF2B8CDEB100DAA623 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.19.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

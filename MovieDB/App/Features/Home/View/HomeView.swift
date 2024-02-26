@@ -12,7 +12,35 @@ struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     
     var body: some View {
-        Text("Hello, World! \(viewModel.popularMovieList.count)")
+        NavigationView {
+            ScrollView {
+                VStack {
+                    ForEach(viewModel.popularMovieList) { index in
+                        Text(index.title ?? "")
+                    }
+                }
+            }
+            .onAppear {
+                Task {
+                    await viewModel.getPopularMovies()
+                }
+            }
+            .refreshable {
+                Task {
+                    await viewModel.getPopularMovies()
+                }
+            }
+            .navigationTitle("")
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    VStack {
+                        Text("Movie DB")
+                            .font(.title)
+                            .bold()
+                    }
+                }
+            }
+        }
     }
 }
 

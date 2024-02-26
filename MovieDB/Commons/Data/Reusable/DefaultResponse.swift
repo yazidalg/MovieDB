@@ -8,9 +8,9 @@
 import Foundation
 
 struct AllDataResponse<T: Codable>: Codable {
-    var data: [T]?
+    var results: [T]?
 }
 
 struct DetailResponse<T: Codable>: Codable {
-    var data: T?
+    var results: T?
 }
