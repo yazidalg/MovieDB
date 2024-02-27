@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AllDataResponse<T: Codable>: Codable {
+struct AllResultResponse<T: Codable>: Codable {
     var results: [T]?
 }
 

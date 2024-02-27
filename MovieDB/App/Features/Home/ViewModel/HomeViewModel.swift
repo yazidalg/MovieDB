@@ -10,7 +10,7 @@ import Foundation
 final class HomeViewModel: ObservableObject {
     private let movieRepository: MovieRepository
     
-    @Published var popularMovieList: [PopularMovie] = []
+    @Published var popularMovieList: [Result] = []
     
     init(movieRepository: MovieRepository = DefaultMovieRepository()) {
         self.movieRepository = movieRepository
@@ -21,8 +21,9 @@ final class HomeViewModel: ObservableObject {
         do {
             let data = try await movieRepository.getPopularMovie()
             self.popularMovieList = data.results ?? []
+            print(self.popularMovieList.first?.backdropPath ?? "Noting")
         } catch {
-            print(error.localizedDescription)
+            print(String(describing: error))
         }
     }
 }

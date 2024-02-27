@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 protocol MovieRepository {
-    func getPopularMovie() async throws -> AllDataResponse<PopularMovie>
+    func getPopularMovie() async throws -> AllResultResponse<Result>
 }
 
 final class DefaultMovieRepository: MovieRepository {
@@ -19,7 +19,7 @@ final class DefaultMovieRepository: MovieRepository {
         self.provider = provider
     }
     
-    func getPopularMovie() async throws -> AllDataResponse<PopularMovie> {
-        try await provider.asyncRequest(.getPopularMovies, model: AllDataResponse<PopularMovie>.self)
+    func getPopularMovie() async throws -> AllResultResponse<Result> {
+        try await provider.asyncRequest(.getPopularMovies, model: AllResultResponse<Result>.self)
     }
 }

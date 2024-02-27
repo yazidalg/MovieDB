@@ -1,15 +1,12 @@
+// This file was generated from JSON Schema using quicktype, do not modify it directly.
+// To parse the JSON, add this file to your project and do:
 //
-//  MoviePopular.swift
-//  MovieDB
-//
-//  Created by Yazid Al Ghozali on 24/02/24.
-//
+//   let popularMovie = try? JSONDecoder().decode(PopularMovie.self, from: jsonData)
 
 import Foundation
 
-// MARK: - PopularMovie
 // MARK: - Result
-struct PopularMovie: Codable, Identifiable {
+struct Result: Codable, Identifiable {
     let adult: Bool?
     let backdropPath: String?
     let genreIDS: [Int]?
@@ -41,5 +38,6 @@ struct PopularMovie: Codable, Identifiable {
 enum OriginalLanguage: String, Codable {
     case de = "de"
     case en = "en"
+    case es = "es"
     case ko = "ko"
 }

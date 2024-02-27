@@ -12,13 +12,22 @@ struct HomeView: View {
     @ObservedObject var viewModel: HomeViewModel
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    ForEach(viewModel.popularMovieList) { index in
-                        Text(index.title ?? "")
+        NavigationStack {
+            ScrollView(.vertical) {
+                VStack(alignment: .leading){
+                    Text("Popular Movie")
+                        .font(.headline)
+                        .padding()
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack {
+                            ForEach(viewModel.popularMovieList) { movie in
+                                moviePopularRow(movie)
+                            }
+                        }
                     }
                 }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                
             }
             .onAppear {
                 Task {
@@ -41,6 +50,37 @@ struct HomeView: View {
                 }
             }
         }
+    }
+}
+
+extension HomeView {
+    @ViewBuilder
+    func moviePopularRow(_ moviePopular: Result) -> some View {
+        VStack(alignment: .leading) {
+            AsyncImage(url: URL(string: Constant.baseImgUrl + (moviePopular.backdropPath ?? ""))) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                case .failure(let error):
+                    Text("Error")
+                case .empty:
+                    ProgressView()
+                default:
+                    ProgressView()
+                }
+            }
+            .scaledToFill()
+            .frame(width: 150, height: 190)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+
+            VStack {
+                Text(moviePopular.title ?? "")
+                    .bold()
+                Text(moviePopular.releaseDate ?? "")
+            }
+        }
+        .padding()
     }
 }
 
